@@ -1,0 +1,61 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block header %}Welcome to Our Website{% endblock %}
+
+{% block subheader %}Your one-stop solution for all your needs!{% endblock %}
+
+{% block content %}
+<div class="content">
+    <h2>Latest News</h2>
+    <p>Stay updated with our latest news and updates.</p>
+    
+    <h3>Featured Articles</h3>
+    <ul>
+        <li><a href="#">Article 1: Introduction to Our Services</a></li>
+        <li><a href="#">Article 2: How We Can Help You</a></li>
+        <li><a href="#">Article 3: Customer Testimonials</a></li>
+    </ul>
+    <h3>Upcoming Events</h3>
+    <ul>
+        <li>Event 1: Webinar on Our Services - Date: 2023-10-15</li>
+        <li>Event 2: Workshop on Best Practices - Date: 2023-10-20</li>
+        <li>Event 3: Q&A Session - Date: 2023-10-25</li>
+    </ul>
+    <h3>Contact Us</h3>
+    <p>If you have any questions or need assistance, feel free to <a href="{% url 'main:terms' %}">contact us</a>.</p>
+</div>
+{% endblock %}
+
+{% block sidebar %}
+<div class="sidebar">
+    <h2>Quick Links</h2>
+    <ul>
+        <li><a href="{% url 'main:home' %}">About Us</a></li>
+        <li><a href="{% url 'main:about' %}">Our Services</a></li>
+        <li><a href="{% url 'main:terms' %}">Contact Us</a></li>
+    </ul>
+    <h2>Follow Us</h2>
+    <p>Stay connected with us on social media!</p>
+    <ul>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Twitter</a></li>
+        <li><a href="#">Instagram</a></li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block footer %}
+<footer>
+    <p>&copy; 2023 Our Website. All rights reserved.</p>
+    <p><a href="{% url 'main:terms' %}">Terms of Service</a> | <a href="{% url 'main:privacy' %}">Privacy Policy</a></p>
+</footer>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Add any JavaScript code here
+    console.log("Welcome to the home page!");
+</script>
+{% endblock %}

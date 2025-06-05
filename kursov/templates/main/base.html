@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/base.css' %}">
+    {% block styles %}{% endblock %}
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'main:home' %}">Home</a></li>
+                <li><a href="{% url 'main:about' %}">About</a></li>
+                <li><a href="{% url 'main:terms' %}">Contact</a></li>
+            </ul>
+        </nav>
+        <h1>{% block header %}{% endblock %}</h1>
+        <p>{% block subheader %}{% endblock %}</p>
+    </header>
+    {% block content %}{% endblock %}
+    {% block sidebar %}{% endblock %}
+    {% block footer %}{% endblock %}
+    {% block scripts %}{% endblock %}
+</body>
+</html>

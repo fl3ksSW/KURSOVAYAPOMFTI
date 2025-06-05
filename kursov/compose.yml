@@ -1,0 +1,109 @@
+services:
+  database:
+    image: postgres:17.4-alpine
+    container_name: pg-db
+    volumes:
+      - pg_db:/var/lib/postgresql/data:rw
+      - /tmp/postgres-tmp:/tmp:tmpfs
+    networks:
+      - backend-network
+    ports:
+      - "5432:5432"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+    command: >
+      postgres  -c max_connections=1000
+                -c shared_buffers=256MB
+                -c effective_cache_size=768MB
+                -c maintenance_work_mem=64MB
+                -c checkpoint_completion_target=0.7
+                -c wal_buffers=16MB
+                -c default_statistics_target=100
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      PGDATA: /var/lib/postgresql/data
+    env_file:
+      - .env
+
+  web-server:
+    image: nginx:1.27.5-alpine
+    container_name: web-server
+    restart: unless-stopped
+    depends_on:
+      - web-app
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./../Dockerfiles/nginx:/etc/nginx
+      - ./../Dockerfiles/uvicorn:/run
+      - static-volume:/var/nginx/static:ro
+    networks:
+      - backend-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 200M
+        reservations:
+          cpus: '0.5'
+          memory: 100M
+
+  web-app:
+    build: .
+    container_name: web-app
+    volumes:
+      - static-volume:/app/static:ro
+    networks:
+      - backend-network
+    depends_on:
+      database:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 192M
+        reservations:
+          cpus: '0.5'
+          memory: 128M
+    restart: unless-stopped
+    environment:
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
+      DJANGO_DEBUG: ${DJANGO_DEBUG}
+      DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS}
+      DJANGO_INTERNAL_IPS: ${DJANGO_INTERNAL_IPS}
+      DJANGO_LOGLEVEL: ${DJANGO_LOGLEVEL}
+      PG_LINK: backend-network
+      PG_USER: ${POSTGRES_USER}
+      PG_PASS: ${POSTGRES_PASSWORD}
+    env_file:
+      - .env
+
+volumes:
+  static-volume:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./staticfiles
+  pg_db:
+
+networks:
+  backend-network:
+    driver: bridge
+    attachable: true

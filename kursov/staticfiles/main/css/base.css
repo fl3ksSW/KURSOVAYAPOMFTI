@@ -1,0 +1,247 @@
+body {
+    background-color: #c91414;
+    font-family: Arial, sans-serif;
+}
+h1 {
+    color: #ff0000;
+}
+p {
+    color: #ff0000;
+}
+a {
+    color: #ff0000;
+    text-decoration: none;
+}
+a:hover {
+    color: #ff4d4d;
+}
+/* Additional styles can be added here */
+/* Example of a class */
+.example-class {
+    background-color: #ffcccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+/* Example of an ID */
+#example-id {
+    font-weight: bold;
+    color: #990000;
+}
+/* Responsive design */
+@media (max-width: 600px) {
+    body {
+        background-color: #ff9999;
+    }
+    h1 {
+        font-size: 24px;
+    }
+    p {
+        font-size: 16px;
+    }
+}
+/* Example of a button style */
+button {
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #ff4d4d;
+}
+/* Example of a form style */
+form {
+    background-color: #ffcccc;
+    padding: 20px;
+    border-radius: 10px;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ff0000;
+    border-radius: 5px;
+}
+input[type="submit"] {
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+input[type="submit"]:hover {
+    background-color: #ff4d4d;
+}
+/* Example of a table style */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+th, td {
+    border: 1px solid #ff0000;
+    padding: 10px;
+    text-align: left;
+}
+th {
+    background-color: #ffcccc;
+}
+td {
+    background-color: #ffe6e6;
+}
+/* Example of a footer style */
+footer {
+    background-color: #ff0000;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+/* Example of a header style */
+header {
+    background-color: #ff0000;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+/* Example of a navigation menu style */
+nav {
+    background-color: #ffcccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+nav ul li a {
+    color: #ff0000;
+    text-decoration: none;
+}
+nav ul li a:hover {
+    color: #ff4d4d;
+}
+/* Example of a card style */
+.card {
+    background-color: #ffe6e6;
+    border: 1px solid #ff0000;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+}
+/* Example of a modal style */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* Example of a tooltip style */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #ff0000;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Position above the tooltip */
+    left: 50%;
+    margin-left: -60px; /* Center the tooltip */
+}
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+/* Example of a loading spinner style */
+.spinner {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #ff0000; /* Red */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+/* Example of a progress bar style */
+.progress {
+    width: 100%;
+    background-color: #f3f3f3;
+    border-radius: 5px;
+}
+.progress-bar {
+    width: 0%;
+    height: 20px;
+    background-color: #ff0000;
+    text-align: center;
+    line-height: 20px;
+    color: white;
+    border-radius: 5px;
+}
+/* Example of a responsive grid layout */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+.grid-item {
+    background-color: #ffe6e6;
+    border: 1px solid #ff0000;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+/* Example of a sidebar style */
+.sidebar {
+    background-color: #ffcccc;
+    padding: 20px;
+    border-radius: 10px;
+    width: 250px;
+    position: fixed;
+    height: 100%;
+}
