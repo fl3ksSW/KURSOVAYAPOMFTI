@@ -4,7 +4,7 @@
 
 MYBESTPROJECT/
 ├── .gitignore
-├── README                  ← Текущий файл
+├── README                  ← Текущий файл
 ├── Dockerfiles/
 │   ├── nginx/
 │   │   └── nginx.conf      ← Конфигурация Nginx
@@ -12,7 +12,7 @@ MYBESTPROJECT/
 │       └── Dockerfile      ← Dockerfile для Uvicorn (ASGI-сервера)
 └── kursov/                 ← Основная директория Django-проекта
     ├── .dockerignore
-    ├── .env                ← Файл переменных окружения
+    ├── .env                ← Файл переменных окружения
     ├── compose.yml         ← Docker Compose для локального запуска
     ├── Dockerfile          ← Dockerfile приложения (Django + Uvicorn)
     ├── manage.py
@@ -33,7 +33,7 @@ MYBESTPROJECT/
     │   └── migrations/
     ├── conf/               ← Конфигурация Django-проекта
     │   ├── asgi.py
-    │   ├── settings.py     ← Основные настройки (ссылки на .env)
+    │   ├── settings.py     ← Основные настройки (ссылки на .env)
     │   ├── urls.py
     │   └── wsgi.py
     └── templates/          ← Шаблоны (Jinja-like)
